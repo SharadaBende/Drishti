@@ -13,6 +13,7 @@ Drishti is a voice-first coding education platform built for visually impaired s
 
 - [About](#about)
 - [Key Features](#key-features)
+- [Screenshots](#screenshots)
 - [Tech Stack](#tech-stack)
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
@@ -52,12 +53,57 @@ The platform is guided by **Pyra**, an animated AI mascot who narrates lessons, 
 - 🏆 **Certificates** — auto-generated, printable completion certificates with grade and score
 - ♿ **Screen-reader friendly navigation** — route changes announce themselves via focus management and an audio cue, plus a skip-to-content link
 
+
+
+
+## Screenshots
+
+### Getting started
+
+<table>
+  <tr>
+    <td align="center"><img src="frontend/docs/images/login.png" width="400"><br><sub>Login</sub></td>
+    <td align="center"><img src="frontend/docs/images/register.png" width="400"><br><sub>Create account</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="frontend/docs/images/welcome_page.png" width="400"><br><sub>Meet Pyra</sub></td>
+    <td align="center"><img src="frontend/docs/images/language_selection.png" width="400"><br><sub>Choose a programming language</sub></td>
+  </tr>
+</table>
+
+### Learning
+
+<table>
+  <tr>
+    <td align="center"><img src="frontend/docs/images/Lessons.png" width="400"><br><sub>Lessons with sidebar</sub></td>
+    <td align="center"><img src="frontend/docs/images/mcq.png" width="400"><br><sub>MCQ quiz</sub></td>
+  </tr>
+</table>
+
+### AI assistant and practice
+
+<table>
+  <tr>
+    <td align="center"><img src="frontend/docs/images/agent.png" width="400"><br><sub>Code Agent</sub></td>
+    <td align="center"><img src="frontend/docs/images/practice.png" width="400"><br><sub>Practice Mode (voice dictation)</sub></td>
+  </tr>
+</table>
+
+### Certificate
+
+<p align="center">
+  <img src="frontend/docs/images/certificate.png" width="400">
+</p>
+
+
+
+
 ## Tech Stack
 
 **Backend**
 - [FastAPI](https://fastapi.tiangolo.com/) (Python)
 - [SQLAlchemy](https://www.sqlalchemy.org/) + SQLite
-- [Groq API](https://groq.com/) (LLM inference for chat, lessons, and code generation)
+- [Groq API](https://groq.com/) (`openai/gpt-oss-20b` for chat, lessons, and code generation — model names are set in `main.py` and may need updating as Groq deprecates models)
 - `passlib` (sha256_crypt) for password hashing
 
 **Frontend**
@@ -265,6 +311,8 @@ Progress updates are never silently lost on a flaky connection:
 - Voice recognition (`SpeechRecognition`) quality depends entirely on the browser and OS — best supported in Chrome
 - Marathi and Hindi both currently rely on the `hi-IN` system voice for TTS; output quality depends on what voices are installed on the user's device
 - The frontend calls a hardcoded `http://127.0.0.1:8000` — no environment-based API URL configuration yet, so production deployment requires this to be parameterized
+- Code execution (`/run-code`, `/generate-code`) runs directly on the server via `subprocess` with no sandboxing — suitable for local/demo use, but needs isolation (containers, resource limits) before any public deployment
+- API endpoints identify users by a `user_id` in the request body and have no token-based authentication yet, so this is not production-ready as-is
 
 ## Contributing
 
