@@ -137,35 +137,35 @@ const javascriptLessons = [
     content: "JavaScript एक programming language है जो websites को interactive और जीवंत बनाती है। जब आप किसी website पर button click करते हैं और कुछ होता है, menu खुलती है, या कोई animation चलती है — यह सब JavaScript की वजह से होता है। JavaScript को 1995 में Brendan Eich ने बनाया था। JavaScript तीन चीज़ों में से एक है जो हर website बनाने के लिए जरूरी है — HTML structure देता है, CSS design देता है, और JavaScript behavior देता है। JavaScript browser में directly चलती है, कोई extra software install करने की जरूरत नहीं। आज JavaScript सिर्फ browser में नहीं बल्कि server पर भी चलती है। JavaScript दुनिया की सबसे popular programming language है और हर web developer को यह जरूर सीखनी चाहिए।", example: null },
   { 
     id: 2, 
-    itle: "console.log()", 
+    title: "console.log()", 
     content: "console.log() JavaScript का सबसे पहला और सबसे जरूरी function है। यह Python के print() जैसा ही है। console.log() browser के developer console में कुछ भी print करता है। Developer console देखने के लिए browser में F12 press करें और Console tab पर जाएं। console.log() में हम text, numbers, variables, और calculations — कुछ भी pass कर सकते हैं। Text को quotes के अंदर लिखते हैं — single या double दोनों चलते हैं। console.log() debugging के लिए बहुत उपयोगी है यानी program में क्या हो रहा है यह check करने के लिए। हर JavaScript developer रोज़ console.log() use करता है।", example: 'console.log("नमस्ते दुनिया!");\nconsole.log(42);\nconsole.log("मेरा नाम Pyra है");\nconsole.log(10 + 20);\nconsole.log("2 का square है:", 2 * 2);' },
   { 
     id: 3, 
-    itle: "Variables — let, const, var", 
+    title: "Variables — let, const, var", 
     content: "JavaScript में variables बनाने के तीन तरीके हैं — let, const, और var. Variable एक डिब्बे की तरह है जिसमें हम data रखते हैं। let से वो variable बनाते हैं जिसकी value बाद में बदल सकती है। जैसे score जो game में बदलता रहता है। const से वो variable बनाते हैं जिसकी value कभी नहीं बदलती। जैसे PI की value हमेशा 3.14159 रहती है। var पुराना तरीका है और आजकल use नहीं करते। Variable का नाम हमेशा letter से शुरू होता है, numbers और underscore भी use हो सकते हैं। JavaScript में variable names case sensitive होते हैं — naam और Naam अलग-अलग हैं। हर statement के अंत में semicolon लगाते हैं।", example: 'let naam = "Sharada";\nlet umar = 20;\nconst PI = 3.14159;\n\nconsole.log(naam);\nconsole.log(umar);\n\numar = 21;\nconsole.log(umar);' },
   { 
     id: 4, 
-    itle: "Data Types", 
+    title: "Data Types", 
     content: "JavaScript में कई data types होते हैं। String मतलब text जो quotes के अंदर लिखते हैं। Number मतलब कोई भी संख्या चाहे पूरी हो या दशमलव। Boolean मतलब true या false। Null मतलब जानबूझकर खाली value। Undefined मतलब variable बनाया पर value नहीं दी। Object मतलब related data का collection। Array मतलब values की list। JavaScript dynamically typed language है यानी एक variable में पहले number रखो फिर string रखो — चलेगा। typeof operator से किसी भी variable का type check कर सकते हैं।", example: 'let naam = "Pyra";\nlet umar = 20;\nlet marks = 95.5;\nlet isStudent = true;\n\nconsole.log(typeof naam);\nconsole.log(typeof umar);\nconsole.log(`मेरा नाम ${naam} है और उम्र ${umar} है`);' },
   { 
     id: 5, 
-    itle: "If/Else Conditions", 
+    title: "If/Else Conditions", 
     content: "If/Else JavaScript में decision making के लिए use होता है। Python की तरह ही काम करता है लेकिन syntax थोड़ा अलग है। JavaScript में condition को round brackets के अंदर लिखते हैं और code block को curly braces के अंदर। अगर condition true है तो if block चलता है, नहीं तो else block चलता है। else if से multiple conditions check कर सकते हैं। Triple equals === value और type दोनों check करता है जो better practice है।", example: 'let umar = 18;\n\nif (umar >= 18) {\n  console.log("आप vote कर सकते हैं");\n} else {\n  console.log("आप vote नहीं कर सकते");\n}\n\nlet marks = 75;\nif (marks >= 90) {\n  console.log("Grade: A");\n} else if (marks >= 75) {\n  console.log("Grade: B");\n} else {\n  console.log("Grade: C");\n}' },
   { 
     id: 6, 
-    itle: "For Loop", 
+    title: "For Loop", 
     content: "For loop से JavaScript में कोई काम बार बार करवाते हैं। JavaScript का for loop Python से अलग दिखता है लेकिन काम एक जैसा है। For loop में तीन parts होते हैं — initialization जहाँ variable बनाते हैं, condition जो true रहने तक loop चलता है, और update जो हर बार चलता है। तीनों को semicolon से अलग करते हैं। for...of loop से array के हर item पर directly काम कर सकते हैं।", example: 'for (let i = 1; i <= 5; i++) {\n  console.log(i);\n}\n\nlet fruits = ["apple", "banana", "mango"];\nfor (let fruit of fruits) {\n  console.log(fruit);\n}' },
   { 
     id: 7, 
-    itle: "Functions", 
+    title: "Functions", 
     content: "Functions JavaScript में reusable code blocks होते हैं। एक बार function बनाओ और बार बार use करो। JavaScript में functions बनाने के दो main तरीके हैं। पहला है function declaration जिसमें function keyword लिखते हैं। दूसरा है arrow function जो modern और shorter तरीका है। Function को call करने के लिए उसका नाम और brackets लिखते हैं। Parameters वो values हैं जो हम function को देते हैं।", example: 'function greet(naam) {\n  console.log("नमस्ते " + naam + "!");\n}\n\nconst add = (a, b) => a + b;\n\ngreet("Sharada");\ngreet("Pyra");\nconsole.log(add(5, 3));' },
   { 
     id: 8, 
-    itle: "Arrays", 
+    title: "Arrays", 
     content: "Array एक list की तरह है जिसमें हम कई values एक साथ रखते हैं। JavaScript में arrays square brackets में बनाते हैं। Array का index 0 से शुरू होता है। length property से array की size पता चलती है। push() से नया item array के अंत में add होता है। forEach() से array के हर item पर एक function चला सकते हैं। map() से array के हर item को transform करके नया array बनता है।", example: 'let fruits = ["apple", "banana", "mango"];\n\nconsole.log(fruits[0]);\nconsole.log(fruits.length);\n\nfruits.push("orange");\n\nlet numbers = [1, 2, 3, 4, 5];\nlet doubled = numbers.map(n => n * 2);\nconsole.log(doubled);' },
   { 
     id: 9, 
-    itle: "Objects", 
+    title: "Objects", 
     content: "Object में हम related data को एक साथ रखते हैं। जैसे एक student का नाम, उम्र, और marks — ये सब एक student object में रख सकते हैं। Object curly braces में बनता है। अंदर key और value pairs होते हैं। Key और value को colon से अलग करते हैं। Object की properties तक पहुँचने के लिए dot notation use करते हैं। Object में functions भी रख सकते हैं जिन्हें methods कहते हैं।", example: 'let student = {\n  naam: "Sharada",\n  umar: 20,\n  sheher: "Mumbai",\n  greet: function() {\n    console.log("नमस्ते, मैं " + this.naam + " हूँ");\n  }\n};\n\nconsole.log(student.naam);\nstudent.greet();' },
   { 
     id: 10,
@@ -176,39 +176,39 @@ const javascriptLessons = [
 const javascriptLessonsEnglish = [
   { 
     id: 1, 
-    itle: "What is JavaScript?", 
+    title: "What is JavaScript?", 
     content: "JavaScript is a programming language that makes websites interactive and alive. When you click a button on a website and something happens, a menu opens, or an animation plays — all of that is because of JavaScript. JavaScript was created in 1995 by Brendan Eich. JavaScript is one of three things needed to build every website — HTML gives the structure, CSS gives the design, and JavaScript gives the behavior. JavaScript runs directly in the browser so no extra software needs to be installed. Today JavaScript runs not only in browsers but also on servers. JavaScript is the most popular programming language in the world and every web developer must learn it.", example: null },
   { 
     id: 2, 
-    itle: "console.log()", 
+    title: "console.log()", 
     content: "console.log() is the first and most important function in JavaScript. It works just like print() in Python. console.log() prints anything to the browser's developer console. To open the developer console press F12 in your browser and go to the Console tab. We can pass text, numbers, variables, and calculations to console.log(). Text is written inside quotes — both single and double quotes work. console.log() is very useful for debugging which means checking what is happening in your program. Every JavaScript developer uses console.log() every single day.", example: 'console.log("Hello World!");\nconsole.log(42);\nconsole.log("My name is Pyra");\nconsole.log(10 + 20);' },
   { 
     id: 3, 
-    itle: "Variables — let, const, var", 
+    title: "Variables — let, const, var", 
     content: "There are three ways to create variables in JavaScript — let, const, and var. A variable is like a box where we store data. We use let for variables whose value can change later. For example a score in a game that keeps changing. We use const for variables whose value never changes. For example the value of PI which is always 3.14159. var is the old way and is no longer used in modern JavaScript. Variable names always start with a letter and can include numbers and underscores. JavaScript variable names are case sensitive — name and Name are different.", example: 'let name = "Sharada";\nlet age = 20;\nconst PI = 3.14159;\n\nconsole.log(name);\nage = 21;\nconsole.log(age);' },
   { 
     id: 4, 
-    itle: "Data Types", 
+    title: "Data Types", 
     content: "JavaScript has several data types. String means text written inside quotes. Number means any numeric value whether whole or decimal. Boolean means true or false. Null means an intentionally empty value. Undefined means a variable was created but no value was given. Object means a collection of related data. Array means a list of values. JavaScript is a dynamically typed language. The typeof operator lets us check the type of any variable. Template literals use backticks and allow us to embed variables directly inside a string.", example: 'let name = "Pyra";\nlet age = 20;\nlet isStudent = true;\n\nconsole.log(typeof name);\nconsole.log(typeof age);\nconsole.log(`My name is ${name} and I am ${age} years old`);' },
   { 
     id: 5, 
-    itle: "If/Else Conditions", 
+    title: "If/Else Conditions", 
     content: "If and Else are used for decision making in JavaScript. They work the same way as in Python but the syntax is a little different. In JavaScript the condition is written inside round brackets and the code block is written inside curly braces. If the condition is true the if block runs, otherwise the else block runs. We use else if to check multiple conditions. Triple equals === checks both value and type which is the better practice.", example: 'let age = 18;\n\nif (age >= 18) {\n  console.log("You can vote");\n} else {\n  console.log("You cannot vote");\n}\n\nlet marks = 75;\nif (marks >= 90) {\n  console.log("Grade: A");\n} else if (marks >= 75) {\n  console.log("Grade: B");\n} else {\n  console.log("Grade: C");\n}' },
   { 
     id: 6, 
-    itle: "For Loop", 
+    title: "For Loop", 
     content: "A for loop is used to repeat a task multiple times in JavaScript. The JavaScript for loop looks different from Python but works the same way. A for loop has three parts — initialization where we create a variable, a condition that keeps the loop running while true, and an update that runs after every iteration. All three parts are separated by semicolons. The for...of loop lets us work directly with each item in an array which is very easy to use.", example: 'for (let i = 1; i <= 5; i++) {\n  console.log(i);\n}\n\nlet fruits = ["apple", "banana", "mango"];\nfor (let fruit of fruits) {\n  console.log(fruit);\n}' },
   { 
     id: 7, 
-    itle: "Functions", 
+    title: "Functions", 
     content: "Functions are reusable code blocks in JavaScript. Write a function once and use it as many times as you want. There are two main ways to create functions in JavaScript. The first is a function declaration where we write the function keyword. The second is an arrow function which is the modern and shorter way. To call a function we write its name and brackets. Parameters are the values we pass to a function. The return keyword lets a function send back a value.", example: 'function greet(name) {\n  console.log("Hello " + name + "!");\n}\n\nconst add = (a, b) => a + b;\n\ngreet("Sharada");\ngreet("Pyra");\nconsole.log(add(5, 3));' },
   { 
     id: 8, 
-    itle: "Arrays", 
+    title: "Arrays", 
     content: "An array is like a list where we store many values together. Arrays in JavaScript are created using square brackets. The index of an array starts from 0. The length property tells us the size of the array. push() adds a new item to the end of the array. forEach() runs a function on every item in the array. map() transforms every item in the array and returns a new array. filter() filters items based on a condition.", example: 'let fruits = ["apple", "banana", "mango"];\n\nconsole.log(fruits[0]);\nconsole.log(fruits.length);\nfruits.push("orange");\n\nlet numbers = [1, 2, 3, 4, 5];\nlet doubled = numbers.map(n => n * 2);\nconsole.log(doubled);' },
   { 
     id: 9, 
-    itle: "Objects", 
+    title: "Objects", 
     content: "Objects are used to store related data together. For example a student's name, age, and marks can all be stored in one student object. An object is created using curly braces. Inside it we have key and value pairs. The key and value are separated by a colon. We use dot notation to access the properties of an object. Objects can also store functions inside them which are called methods.", example: 'let student = {\n  name: "Sharada",\n  age: 20,\n  city: "Mumbai",\n  greet: function() {\n    console.log("Hello, I am " + this.name);\n  }\n};\n\nconsole.log(student.name);\nstudent.greet();' },
   { 
     id: 10,
