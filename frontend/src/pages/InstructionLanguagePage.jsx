@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
+import { pickVoice } from "../components/voices"
 
 const instructionLanguages = [
   { id: "hindi",   label: "हिंदी",   desc: "Hindi medium — सबसे popular",    key: "1", flag: "🇮🇳", voiceLang: "hi-IN" },
@@ -62,11 +63,7 @@ function InstructionLanguagePage() {
     utterance.lang = lang || "hi-IN"
     utterance.rate = parseFloat(localStorage.getItem("speed") || "0.85")
     const trySpeak = () => {
-      const voices = window.speechSynthesis.getVoices()
-      const preferred = voices.find(v =>
-        (lang === "en-US" && v.name === "Microsoft Zira - English (United States)") ||
-        (lang === "hi-IN" && v.name === "Google हिन्दी")
-      ) || voices.find(v => v.lang === lang)
+          const preferred = pickVoice(lang)
       if (preferred) utterance.voice = preferred
       if (onEnd) {
         utterance.onend = onEnd
@@ -82,26 +79,52 @@ function InstructionLanguagePage() {
   }
 
   useEffect(() => {
-    setTimeout(() => {
-      const rate = parseFloat(localStorage.getItem("speed") || "0.85")
-      const u1 = new SpeechSynthesisUtterance("1 दबाएं हिंदी के लिए।")
-      u1.lang = "hi-IN"; u1.rate = rate
-      const u2 = new SpeechSynthesisUtterance("For English, press 2.")
-      u2.lang = "en-US"; u2.rate = rate
-      const u3 = new SpeechSynthesisUtterance("मराठीसाठी 3 दाबा.")
-      u3.lang = "hi-IN"; u3.rate = rate
-      window.speechSynthesis.cancel()
-      window.speechSynthesis.speak(u1)
-      window.speechSynthesis.speak(u2)
-      window.speechSynthesis.speak(u3)
+    const synth = window.speechSynthesis
+    const rate = parseFloat(localStorage.getItem("speed") || "0.85")
+    let cancelled = false
+
+    const lines = [
+      { text: "1 दबाएं हिंदी के लिए।", lang: "hi-IN" },
+      { text: "For English, press 2.", lang: "en-US" },
+      { text: "मराठीसाठी 3 दाबा.", lang: "mr-IN" },
+    ]
+
+    function speakLine(i) {
+      if (cancelled || i >= lines.length) return
+      const { text, lang } = lines[i]
+      const u = new SpeechSynthesisUtterance(text)
+      u.lang = lang
+      u.rate = rate
+      const voice = pickVoice(lang)
+      console.log("Speaking", lang, "with voice:", voice ? voice.name : "NONE")
+      if (voice) u.voice = voice
+      u.onend = () => speakLine(i + 1)
+      u.onerror = (e) => { console.log("Speech error:", e.error); speakLine(i + 1) }
+      synth.speak(u)
+    }
+
+    function start() {
+      synth.cancel()
+      setTimeout(() => speakLine(0), 150)
+    }
+
+    const timer = setTimeout(() => {
+      if (synth.getVoices().length === 0) synth.onvoiceschanged = start
+      else start()
     }, 500)
+
+    return () => {
+      cancelled = true
+      clearTimeout(timer)
+      synth.cancel()
+    }
   }, [])
 
   function selectLanguage(lang) {
     const messages = {
       hindi:   { text: "हिंदी चुना! चलिए शुरू करते हैं।",    voice: "hi-IN" },
       english: { text: "English selected! Let's get started.", voice: "en-US" },
-      marathi: { text: "मराठी निवडली! चला सुरू करूया।",      voice: "hi-IN" },
+      marathi: { text: "मराठी निवडली! चला सुरू करूया।",      voice: "mr-IN" },
     }
     const msg = messages[lang.id]
     speak(msg.text, msg.voice, () => {
