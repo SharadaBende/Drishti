@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useNavigate, useLocation } from "react-router-dom"
 import { useTheme } from "../components/useTheme"
+import { pickVoice } from "../components/voices"
 
 const translations = {
   hindi: {
@@ -101,11 +102,7 @@ function LoginPage() {
     utterance.lang = lang
     utterance.rate = parseFloat(localStorage.getItem("speed") || "0.85")
     const trySpeak = () => {
-      const voices = window.speechSynthesis.getVoices()
-      const preferred = voices.find(v =>
-        (lang === "en-US" && v.name === "Microsoft Zira - English (United States)") ||
-        (lang === "hi-IN" && v.name === "Google हिन्दी")
-      ) || voices.find(v => v.lang === lang)
+            const preferred = pickVoice(lang)
       if (preferred) utterance.voice = preferred
       if (onEnd) {
         utterance.onend = onEnd
